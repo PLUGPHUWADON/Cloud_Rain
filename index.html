@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <div class="cloud"></div>
+        <h2>DATA CLOUD RAIN</h2>
+    </main>
+
+    <script>
+
+        let cloud = document.querySelector(".cloud");
+        let rain = document.querySelectorAll(".cloud > div");
+        let div = document.createElement("div");
+
+        setInterval(() => {
+            div = document.createElement("div");
+            div.innerHTML = rantext();
+            div.style = `left: ${Math.floor(Math.random() * 250)}px; font-size: ${Math.floor(Math.random() * 25)}px;`;
+            div.classList.add("drop");
+            cloud.appendChild(div);
+            rain = document.querySelectorAll(".cloud > div");
+        },20);
+
+        setInterval(() => {
+            console.log(rain.length-1)
+            cloud.removeChild(rain[0]);
+            if (rain.length > 2000) {
+                for (let i = 0 ; i < rain.length ; i++) {
+                    cloud.innerHTML = "";
+                }
+            }
+        },60);
+
+        function rantext() {
+            let text = "!@#$%^&*()-=+";
+            let result = text[Math.floor(Math.random() * text.length)];
+            return(result);
+        }
+
+    </script>
+    
+</body>
+</html>
